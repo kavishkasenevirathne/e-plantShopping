@@ -7,7 +7,7 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
-  // ✅ Calculate total cost of all items in the cart
+
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => {
       const cost = parseFloat(item.cost.substring(1)); // Remove '$' and parse
@@ -15,17 +15,17 @@ const CartItem = ({ onContinueShopping }) => {
     }, 0).toFixed(2);
   };
 
-  // ✅ Continue shopping button
+ 
   const handleContinueShopping = (e) => {
     onContinueShopping(e);
   };
 
-  // ✅ Increase quantity
+
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
   };
 
-  // ✅ Decrease quantity or remove if 1
+
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
       dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
@@ -34,18 +34,18 @@ const CartItem = ({ onContinueShopping }) => {
     }
   };
 
-  // ✅ Remove item entirely
+
   const handleRemove = (item) => {
     dispatch(removeItem(item.name));
   };
 
-  // ✅ Calculate subtotal for each item
+
   const calculateTotalCost = (item) => {
     const cost = parseFloat(item.cost.substring(1)); // Remove '$' and parse
     return (cost * item.quantity).toFixed(2);
   };
 
-  // ✅ Placeholder for future checkout logic
+ 
   const handleCheckoutShopping = (e) => {
     alert('Functionality to be added for future reference');
   };
